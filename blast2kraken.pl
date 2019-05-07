@@ -2,7 +2,7 @@
 
 # Give a Kraken-style report from a Blast output
 #
-# Xiangzhi Liang <xiangzhi.liang@simceredx.com>
+# Xiangzhi Liang <xiang_zhi_@126.com>
 # version 0.1  2019-05
 
 use strict;
