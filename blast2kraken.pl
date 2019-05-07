@@ -99,6 +99,7 @@ printf "%6.2f\t%d\t%d\t%s\t%d\t%s%s\n",
   0, "", "unclassified";
 dfs_report(1, 0);
 
+print STDERR "Done !\n";
 ######################
 sub isTaxIDInTree {
   my $a = $_[0] ;
