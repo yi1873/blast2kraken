@@ -18,3 +18,9 @@ Options:
     -min-ident  Score           Require a minimum identity score for reads alignment
     -min-length Score           Require a minimum lentgh for reads query
 ```
+注：此脚本适用于blast -outfmt '6 qseqid qlen sseqid sgi slen pident length mismatch gapopen qstart qend sstart send evalue bitscore staxid ssciname'格式的比对结果；
+
+若blast格式不符，可更改脚本中对应项的位置；
+```
+my ($readID,$qlen,$seqID,$pident,$taxID)= @arr[0,1,2,5,15] ;
+```
