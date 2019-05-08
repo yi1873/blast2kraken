@@ -30,13 +30,14 @@ sub usage {
   my $exit_code = @_ ? shift : 64;
   print STDERR "
 Usage: blast2kraken.pl -x <blast result>  -q <fasta>  -t <taxdb> OPTIONS  > <kraken-style.out>
+       blast2kraken.pl -x <blast result> -t <taxdb> OPTIONS > <kraken-style.out>
 
 blast2kraken.pl creates Kraken-style reports from blast out files.
 
 Options:
-    -x  Blast            (REQUIRED) Blast result 
-    -q  Fasta            (REQUIRED) Fasta input
+    -x  Blast            (REQUIRED) Blast result
     -t  TaxDB            (REQUIRED) Taxdb from taxonomy
+    -q  Fasta            Fasta input
     -min-ident  Score           Require a minimum identity score for reads alignment
     -min-length Score           Require a minimum lentgh for reads query
 
@@ -52,9 +53,6 @@ sub display_help {
 my (%child_lists, %name_map, %rank_map, %parent_map);
 print STDERR "Loading taxonomy ...\n";
 load_taxonomy($taxdb,\%name_map, \%child_lists, \%rank_map, \%parent_map);
-
-# fasta reads count
-my $seq_count = readpipe("cat $fasta|grep '>'|wc -l");
 
 # blast result
 my (%hash,%taxo_counts,$prevReadID,$prevTaxID);
@@ -89,9 +87,16 @@ dfs_summation(1);
 for (keys %name_map) {
   $clade_counts{$_} ||= 0;
 }
-die "No sequence matches with given settings" unless $seq_count > 0;
+#die "No sequence matches with given settings" unless $seq_count > 0;
 
 # output
+my $seq_count ;
+if(defined $fasta){
+    $seq_count = readpipe("cat $fasta|grep '>'|wc -l");
+}else{
+    $seq_count = $classified_count;
+}
+
 my $unclassified = $seq_count - $classified_count;
 printf "%6.2f\t%d\t%d\t%s\t%d\t%s%s\n",
   $unclassified * 100 / $seq_count,
