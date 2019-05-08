@@ -15,7 +15,7 @@ blast2kraken.pl creates Kraken-style reports from blast out files.
 Options:
     -x  Blast            (REQUIRED) Blast result
     -t  TaxDB            (REQUIRED) Taxdb from taxonomy
-    -q  Fasta		 Fasta input, to count the unclassifed reads count
+    -q  Fasta		 Fasta input, to count all sequencing reads
     -min-ident  Score           Require a minimum identity score for reads alignment
     -min-length Score           Require a minimum lentgh for reads query
 ```
