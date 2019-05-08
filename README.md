@@ -8,13 +8,14 @@ centrifuge-kreport 可将centrifuge结果生成kraken-style report; 在此脚本
 > Usage:
 ```
 Usage: blast2kraken.pl -x <blast result>  -q <fasta>  -t <taxdb> OPTIONS  > <kraken-style.out>
+       blast2kraken.pl -x <blast result> -t <taxdb> OPTIONS > <kraken-style.out>
 
 blast2kraken.pl creates Kraken-style reports from blast out files.
 
 Options:
     -x  Blast            (REQUIRED) Blast result
-    -q  Fasta            (REQUIRED) Fasta input
     -t  TaxDB            (REQUIRED) Taxdb from taxonomy
+    -q  Fasta		 Fasta input
     -min-ident  Score           Require a minimum identity score for reads alignment
     -min-length Score           Require a minimum lentgh for reads query
 ```
