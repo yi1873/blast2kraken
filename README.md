@@ -28,7 +28,7 @@ my ($readID,$qlen,$seqID,$pident,$taxID)= @arr[0,1,2,5,15] ;
 > Example结果鉴定物种展示
 ```
 $less example.blast2kraken.report|awk -F '\t' '$1>1 && $4=="S"{sub(/^[ \t]+|[ ]+$/,"",$NF);print $1"\t"$2"\t"$4"\t"$5"\t"$NF}'|head -5
-23.98  29981   S       1280    Staphylococcus aureus
+ 23.98  29981   S       1280    Staphylococcus aureus
   4.00  4996    S       1639    Listeria monocytogenes
   3.98  4978    S       1423    Bacillus subtilis
   3.96  4946    S       1613    Lactobacillus fermentum
